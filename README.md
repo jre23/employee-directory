@@ -50,6 +50,8 @@ Git for Windows: 2.28.0.1
 
 [React](https://reactjs.org)
 
+[Random User API](https://randomuser.me)
+
 Git clone link: htt<span>ps://github.com/jre23/employee-directory.git</span>
 
 ## Usage
