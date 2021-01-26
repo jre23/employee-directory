@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserName(props) {
+const UserList = props => {
   let birthdayDate = new Date(props.dob.date).toLocaleDateString("en-US");
   // console.log("=====props=====");
   // console.log(props);
@@ -8,11 +8,12 @@ function UserName(props) {
     <>
       <div className="row ml-1">
         <div className="col">
-          {props.name.first} {props.name.last}
-        </div>
-        <div className="col">
           <img src={props.picture.large} alt={`random user ${props.name.first}`}></img>
         </div>
+        <div className="col">
+          {props.name.first} {props.name.last}
+        </div>
+
         <div className="col">
           {props.cell}
         </div>
@@ -27,4 +28,4 @@ function UserName(props) {
   );
 }
 
-export default UserName;
+export default UserList;
