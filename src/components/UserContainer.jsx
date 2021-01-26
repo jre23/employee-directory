@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../utils/API";
-import UserList from "./UserList";
+import UserName from "./UserName";
+import UserPhoto from "./UserPhoto";
 
 class UserContainer extends React.Component {
 	// initialize state variables
@@ -17,17 +18,30 @@ class UserContainer extends React.Component {
 			.then(res => {
 				this.setState({ result: res.data.results })
 				console.log(this.state.result);
-				this.state.result.map(item => console.log(item.name.first));
+				// this.state.result.map(item => console.log(item.picture.large));
 			})
 			.catch(err => console.log(err));
 	}
 
 	render() {
 		return (
-			<div className="text-center">
-				<h1>Hello from the UserContainer component!</h1>
-				<h4>{this.state.result.map(item => <UserList name={item.name.first} />)} </h4>
-			</div>
+			<>
+				<div className="row">
+					<div className="col-12">
+						<h1 className="text-center">Hello from the UserContainer component!</h1>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-2 ml-2">
+						<h1 className="test-center">Name</h1>
+						<h4>{this.state.result.map(item => <UserName firstName={item.name.first} lastName={item.name.last} />)}</h4>
+					</div>
+					<div className="col-2 ml-2">
+						<h1 className="test-center">Photo</h1>
+						{this.state.result.map(item => <UserPhoto pictureUrl={item.picture.large} />)}
+					</div>
+				</div>
+			</>
 		);
 	}
 }
