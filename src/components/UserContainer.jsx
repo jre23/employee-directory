@@ -6,6 +6,7 @@ class UserContainer extends React.Component {
   // initialize state variables
   state = {
     result: [],
+    clicked: false
   };
   // when component mounts, make api call to populate UI
   componentDidMount() {
@@ -22,7 +23,27 @@ class UserContainer extends React.Component {
       .catch(err => console.log(err));
   }
   // handle sort
+  handleSort = () => {
+    const sortedArray = this.state.result;
+    sortedArray.sort((a, b) => {
+      let x = a.name.first;
+      let y = b.name.first;
 
+      if (this.state.clicked) {
+        return x === y ? 0 : x > y ? 1 : -1;
+      } else {
+        return x === y ? 0 : x > y ? -1 : 1;
+      }
+    });
+    // set state to new sortedArray
+    this.setState({ result: sortedArray });
+    // set click state 
+    if (this.state.clicked) {
+      this.setState({ clicked: false })
+    } else {
+      this.setState({ clicked: true })
+    }
+  };
   // render UI
   render() {
     return (
@@ -39,7 +60,7 @@ class UserContainer extends React.Component {
               <h3 className="text-center">Photo</h3>
             </div>
             <div className="col">
-              <h3 className="text-center">Name</h3>
+              <span onClick={this.handleSort}><h3 className="text-center">Name</h3></span>
             </div>
             <div className="col">
               <h3 className="text-center">Phone Number</h3>

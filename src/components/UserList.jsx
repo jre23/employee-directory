@@ -13,7 +13,6 @@ const UserList = props => {
         <div className="col">
           {props.name.first} {props.name.last}
         </div>
-
         <div className="col">
           {props.cell}
         </div>
