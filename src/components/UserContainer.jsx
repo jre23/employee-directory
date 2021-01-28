@@ -23,8 +23,10 @@ class UserContainer extends React.Component {
   searchRandomUser = () => {
     API.search()
       .then(res => {
-        this.setState({ result: res.data.results });
-        this.setState({ resultOriginal: this.state.result });
+        this.setState({
+          result: res.data.results,
+          resultOriginal: res.data.results
+        });
         // console.log(this.state.result);
         // this.state.result.map(item => console.log(item));
       })
@@ -59,34 +61,25 @@ class UserContainer extends React.Component {
     this.setState({
       [name]: value
     });
-    this.handleSearch(event);
-  };
-  // handle search filter
-  handleSearch = event => {
-    // get the value and name of the input that triggered the change
-    console.log(this.state.searchInput);
-    let value = event.target.value;
+    // trim and make search input lower case
     let searchInputLower = value.trim().toLowerCase();
     let resultFiltered = [];
+    // search input value is empty, set results array to empty
     if (searchInputLower === "") {
       resultFiltered.length = 0;
     } else {
+      // else filter through the state result for any matches
       resultFiltered = this.state.result.filter(item => {
         return (item.name.first.toLowerCase().includes(searchInputLower) || item.name.last.toLowerCase().includes(searchInputLower) || item.cell.includes(searchInputLower))
       })
     };
-    // updating state
-    if (this.state.searchInput === "" || resultFiltered.length === 0) {
+    // update state. if no results set state to original list, else set it to results list
+    if (searchInputLower === "" || resultFiltered.length === 0) {
       this.setState({ result: this.state.resultOriginal })
     } else {
       this.setState({ result: resultFiltered })
     }
   };
-
-  twoFunctionCalls = event => {
-    this.handleInputChange(event);
-    this.handleSearch(event);
-  }
 
   // render UI
   render() {
@@ -105,11 +98,7 @@ class UserContainer extends React.Component {
           />
           <br />
           <UserCategories handleSort={this.handleSort} />
-          <div className="row text-center">
-            <div className="col-12">
-              {this.state.result.map(item => <UserList key={item.login.uuid} {...item} />)}
-            </div>
-          </div>
+          {this.state.result.map(item => <UserList key={item.login.uuid} {...item} />)}
         </div>
       </>
     );
