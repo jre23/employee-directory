@@ -1,11 +1,7 @@
 import axios from "axios";
 
-const BASEURL = "https://randomuser.me/api/?results=23";
+const BASEURL = "https://randomuser.me/api/?results=10";
 
-const searchAPI = () => {
-    return axios.get(BASEURL);
-};
+const search = () => axios.get(BASEURL);
 
-const defaultOjb = { search: searchAPI };
-
-export default defaultOjb;
+export default search;

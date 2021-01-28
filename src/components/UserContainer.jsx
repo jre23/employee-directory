@@ -21,21 +21,20 @@ class UserContainer extends React.Component {
   }
   // this function calls the API util and sets the result state to the data results
   searchRandomUser = () => {
-    API.search()
+    console.log("=====searchRandomUser=====");
+    API()
       .then(res => {
         this.setState({
           result: res.data.results,
           resultOriginal: res.data.results
         });
-        // console.log(this.state.result);
-        // this.state.result.map(item => console.log(item));
       })
       .catch(err => console.log(err));
   }
   // handle sort
   handleSort = category => {
-    const sortedArray = this.state.result;
-    sortedArray.sort((a, b) => {
+    console.log("=====handleSort=====");
+    let sortedArray = this.state.result.slice().sort((a, b) => {
       let x = a.name.first;
       let y = b.name.first;
       if (this.state.nameClicked) {
@@ -44,7 +43,6 @@ class UserContainer extends React.Component {
         return x === y ? 0 : x > y ? -1 : 1;
       }
     });
-    // set state to new sortedArray
     this.setState({ result: sortedArray });
     // set click state 
     if (this.state.nameClicked) {
@@ -55,6 +53,7 @@ class UserContainer extends React.Component {
   };
   // handle search input
   handleInputChange = event => {
+    console.log("====handleInputChange====");
     // get the value and name of the input that triggered the change
     let value = event.target.value;
     const name = event.target.name;
@@ -81,6 +80,16 @@ class UserContainer extends React.Component {
     }
   };
 
+  resetList = () => {
+    console.log("=====resetList=====");
+    this.setState({
+      result: this.state.resultOriginal,
+      nameClicked: false,
+      searchInput: ""
+    })
+    document.getElementById("search-input").value = "";
+  };
+
   // render UI
   render() {
     return (
@@ -94,7 +103,7 @@ class UserContainer extends React.Component {
           <br />
           <UserSearch
             handleInputChange={this.handleInputChange}
-            searchInput={this.state.searchInput}
+            resetList={this.resetList}
           />
           <br />
           <UserCategories handleSort={this.handleSort} />
