@@ -1,6 +1,8 @@
 import React from "react";
 import API from "../utils/API";
 import UserList from "./UserList";
+import UserSearch from "./UserSearch";
+import UserCategories from "./UserCategories";
 
 class UserContainer extends React.Component {
   // initialize state variables
@@ -8,7 +10,7 @@ class UserContainer extends React.Component {
     result: [],
     nameClicked: false,
     searchInput: "",
-    resultCopy: []
+    resultOriginal: []
     // phoneClicked: false,
     // emailClicked: false,
     // birthdayClicked: false
@@ -22,7 +24,7 @@ class UserContainer extends React.Component {
     API.search()
       .then(res => {
         this.setState({ result: res.data.results });
-        this.setState({ resultCopy: this.state.result });
+        this.setState({ resultOriginal: this.state.result });
         // console.log(this.state.result);
         // this.state.result.map(item => console.log(item));
       })
@@ -57,22 +59,34 @@ class UserContainer extends React.Component {
     this.setState({
       [name]: value
     });
+    this.handleSearch(event);
+  };
+  // handle search filter
+  handleSearch = event => {
+    // get the value and name of the input that triggered the change
+    console.log(this.state.searchInput);
+    let value = event.target.value;
     let searchInputLower = value.trim().toLowerCase();
     let resultFiltered = [];
     if (searchInputLower === "") {
       resultFiltered.length = 0;
     } else {
       resultFiltered = this.state.result.filter(item => {
-        return (item.name.first.toLowerCase().includes(searchInputLower) || item.name.last.toLowerCase().includes(searchInputLower))
+        return (item.name.first.toLowerCase().includes(searchInputLower) || item.name.last.toLowerCase().includes(searchInputLower) || item.cell.includes(searchInputLower))
       })
     };
     // updating state
     if (this.state.searchInput === "" || resultFiltered.length === 0) {
-      this.setState({ result: this.state.resultCopy })
+      this.setState({ result: this.state.resultOriginal })
     } else {
       this.setState({ result: resultFiltered })
     }
   };
+
+  twoFunctionCalls = event => {
+    this.handleInputChange(event);
+    this.handleSearch(event);
+  }
 
   // render UI
   render() {
@@ -85,30 +99,12 @@ class UserContainer extends React.Component {
             </div>
           </div>
           <br />
-          <div className="input-group">
-            <input type="text" name="searchInput" onChange={this.handleInputChange} className="form-control" aria-label="Text input with search button" />
-            <button type="button" className="btn btn-outline-secondary">Search</button>
-          </div>
-          <span />
+          <UserSearch
+            handleInputChange={this.handleInputChange}
+            searchInput={this.state.searchInput}
+          />
           <br />
-          <p>Your search: {this.state.searchInput}</p>
-          <div className="row text-center">
-            <div className="col">
-              <h3 className="text-center">Photo</h3>
-            </div>
-            <div className="col">
-              <span onClick={this.handleSort}><h3 className="text-center">Name</h3></span>
-            </div>
-            <div className="col">
-              <h3 className="text-center">Phone Number</h3>
-            </div>
-            <div className="col">
-              <h3 className="text-center">Email</h3>
-            </div>
-            <div className="col">
-              <h3 className="text-center">Birthday</h3>
-            </div>
-          </div>
+          <UserCategories handleSort={this.handleSort} />
           <div className="row text-center">
             <div className="col-12">
               {this.state.result.map(item => <UserList key={item.login.uuid} {...item} />)}
