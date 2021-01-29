@@ -1,6 +1,7 @@
 import React from "react";
-
+// this UserList component creates the list of random employees
 const UserList = props => {
+  // change the API returned birthday format to a more readable format
   let birthdayDate = new Date(props.dob.date).toLocaleDateString("en-US");
   return (
     <>

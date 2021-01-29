@@ -1,5 +1,5 @@
 import React from "react";
-
+// this UserSearch component handles the search input and reset list functionality
 const UserSearch = props => {
   return (
     <>
