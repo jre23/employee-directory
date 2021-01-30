@@ -21,19 +21,17 @@ class UserContainer extends React.Component {
   }
   // this function calls the API util and sets the result state to the data results
   searchRandomUser = () => {
-    console.log("=====searchRandomUser=====");
     API()
       .then(res => {
         this.setState({
           result: res.data.results,
           resultOriginal: res.data.results
-        }); console.log(res.data.results);
+        });
       })
       .catch(err => console.log(err));
   }
   // handle sort
   handleSort = event => {
-    console.log("=====handleSort=====");
     let keyName = event.target.getAttribute("value");
     let sortedArray = this.state.result.slice().sort((a, b) => {
       let x = "";
@@ -75,7 +73,6 @@ class UserContainer extends React.Component {
   };
   // handle search input
   handleInputChange = event => {
-    console.log("====handleInputChange====");
     // get the value and name of the input that triggered the change
     let value = event.target.value;
     const name = event.target.name;
@@ -103,7 +100,6 @@ class UserContainer extends React.Component {
   };
   // button click handler to reset the list to the original list after the user has sorted the list or searched for a person in the list
   resetList = () => {
-    console.log("=====resetList=====");
     this.setState({
       result: this.state.resultOriginal,
       name: false,

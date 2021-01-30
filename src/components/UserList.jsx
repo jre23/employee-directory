@@ -8,20 +8,20 @@ const UserList = props => {
       <div className="row text-center">
         <div className="col-12">
           <div className="row ml-1">
-            <div className="col">
+            <div className="col text-break">
               <img src={props.picture.medium} alt={`random user ${props.name.first}`}></img>
             </div>
-            <div className="col">
-              {props.name.first} {props.name.last}
+            <div className="col text-break">
+              <p>{props.name.first} {props.name.last}</p>
             </div>
-            <div className="col">
-              {props.cell}
+            <div className="col text-break">
+              <p>{props.cell}</p>
             </div>
-            <div className="col">
-              {props.email}
+            <div className="col text-break">
+              <p>{props.email}</p>
             </div>
-            <div className="col">
-              {birthdayDate}
+            <div className="col text-break">
+              <p> {birthdayDate}</p>
             </div>
           </div>
         </div>
