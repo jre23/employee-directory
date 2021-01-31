@@ -1,0 +1,21 @@
+/* font sizes for responsiveness */
+@media screen and (min-width: 651px) {
+
+  h3 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+
+  h3 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  h3 {
+    font-size: 14px;
+  }
+}

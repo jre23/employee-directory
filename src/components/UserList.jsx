@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/UserList.css";
 // this UserList component creates the list of random employees
 const UserList = props => {
   // change the API returned birthday format to a more readable format
@@ -8,7 +9,7 @@ const UserList = props => {
       <div className="row text-center">
         <div className="col-12">
           <div className="row ml-1">
-            <div className="col text-break">
+            <div className="col text-break p-0 p-sm-2">
               <img src={props.picture.medium} alt={`random user ${props.name.first}`}></img>
             </div>
             <div className="col text-break">

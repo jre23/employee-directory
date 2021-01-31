@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/UserCategories.css"
 // this UserCategories component creates the column titles and handles the sorting of the list by name
 const UserCategories = props => {
   return (

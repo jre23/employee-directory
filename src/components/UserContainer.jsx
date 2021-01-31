@@ -116,12 +116,14 @@ class UserContainer extends React.Component {
     return (
       <>
         <div className="main">
-          <div className="row border border-dark">
-            <div className="col-12">
-              <h1 className="text-center">Random Employee Directory</h1>
+          <div className="row">
+            <div className="col-12 border border-dark">
+              <h1 className="text-center" style={{ color: "#C7493A" }}>Random Employee Directory</h1>
+            </div>
+            <div className="col-md-10 col-12 text-center d-flex mx-auto pt-2">
+              <p className="">Welcome to the Random Employee Directory! This random list of employees was generated from the Random User API. This app allows sorting through the list by each category except photo (click on the column titles to sort in both directions!). This app also allows for searching the list by name or phone number! Click the Reset List button to return the list to its original form when the page was loaded!</p>
             </div>
           </div>
-          <br />
           <UserSearch
             handleInputChange={this.handleInputChange}
             resetList={this.resetList}
@@ -129,6 +131,7 @@ class UserContainer extends React.Component {
           <br />
           <UserCategories handleSort={this.handleSort}
           />
+          <br />
           {this.state.result.map(item => <UserList key={item.login.uuid} {...item}
           />)}
         </div>

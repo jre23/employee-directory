@@ -7,7 +7,7 @@ const UserSearch = props => {
         <input id="search-input" type="text" placeholder="Search" name="searchInput" onChange={props.handleInputChange} className="form-control" aria-label="Text input" />
       </div>
       <br />
-      <button type="button" className="btn btn-outline-info justify-content-center col-.5 d-flex mx-auto" onClick={props.resetList}>Reset List</button>
+      <button type="button" className="btn btn-outline-secondary justify-content-center col-.5 d-flex mx-auto" style={{ color: "#689775" }} onClick={props.resetList}>Reset List</button>
     </>
   )
 };
