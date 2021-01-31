@@ -18,15 +18,17 @@ The goal for this project was to build a React application that displays a table
 
 [GitHub Repo](https://github.com/jre23/employee-directory)
 
-[GitHub Deployment] - in development
+[GitHub Deployment](https://jre23.github.io/employee-directory)
 
 ## Screenshots
 
-![employee directory screenshot 1]()
+![employee directory screenshot 1](https://user-images.githubusercontent.com/69170823/106373106-35114580-632b-11eb-8cce-1c806d64c4af.png)
 
-![employee directory screenshot 2]()
+![employee directory screenshot 2](https://user-images.githubusercontent.com/69170823/106373124-52461400-632b-11eb-838b-8eadfff04456.png)
 
-![employee directory screenshot 3]()
+![employee directory screenshot 3](https://user-images.githubusercontent.com/69170823/106373134-67bb3e00-632b-11eb-983a-9868155d9d77.png)
+
+![employee directory screenshot 4](https://user-images.githubusercontent.com/69170823/106373146-83264900-632b-11eb-8904-cb068df8de8c.png)
 
 ## Technologies
 

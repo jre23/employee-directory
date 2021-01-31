@@ -58,9 +58,9 @@ class UserContainer extends React.Component {
           y = b;
       }
       if (this.state[keyName]) {
-        return x === y ? 0 : x > y ? 1 : -1;
-      } else {
         return x === y ? 0 : x > y ? -1 : 1;
+      } else {
+        return x === y ? 0 : x > y ? 1 : -1;
       }
     });
     this.setState({ result: sortedArray });
@@ -121,7 +121,9 @@ class UserContainer extends React.Component {
               <h1 className="text-center" style={{ color: "#C7493A" }}>Random Employee Directory</h1>
             </div>
             <div className="col-md-10 col-12 text-center d-flex mx-auto pt-2">
-              <p className="">Welcome to the Random Employee Directory! This random list of employees was generated from the Random User API. This app allows sorting through the list by each category except photo (click on the column titles to sort in both directions!). This app also allows for searching the list by name or phone number! Click the Reset List button to return the list to its original form when the page was loaded!</p>
+              <p className="">Welcome to the Random Employee Directory! This random list of employees was generated from the Random User API. This app allows sorting through the list by each category except photo (click on the column titles to sort in both directions!). This app also allows for searching the list by name or phone number! Click the Reset List button to return the list to its original form when the page was loaded!
+              <br />
+                <strong>NOTE:</strong> Known bug: "Access to XMLHttpRequest at 'https://randomuser.me/api/?results=15' from origin 'https://jre23.github.io' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource." <strong>WORKAROUND:</strong> Refresh the page until a list of random users shows up.</p>
             </div>
           </div>
           <UserSearch
