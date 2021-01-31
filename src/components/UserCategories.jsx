@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/UserCategories.css"
+import "../styles/UserCategories.css";
 // this UserCategories component creates the column titles and handles the sorting of the list by name
 const UserCategories = props => {
   return (
@@ -23,7 +23,7 @@ const UserCategories = props => {
           <h3 className="text-center" value="birthday">Birthday</h3></span>
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default UserCategories;

@@ -10,7 +10,7 @@ const UserList = props => {
         <div className="col-12">
           <div className="row ml-1">
             <div className="col text-break p-0 p-sm-2">
-              <img src={props.picture.medium} alt={`random user ${props.name.first}`}></img>
+              <img src={props.picture.large} alt={`random user ${props.name.first}`}></img>
             </div>
             <div className="col text-break">
               <p>{props.name.first} {props.name.last}</p>
